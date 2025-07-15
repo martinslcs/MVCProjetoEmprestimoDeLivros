@@ -6,7 +6,7 @@
         public string Recebedor { get; set; }
         public String Fornecedor { get; set; }
         public String LivroEmprestado { get; set; }
-        public DateTime DataEmprestimo { get; set; } = DateTime.Now;
+        public DateTime DataUltimaAtualizacao { get; set; } = DateTime.Now;
 
 
     }
