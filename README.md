@@ -17,7 +17,7 @@ Este projeto é um sistema simples de controle de empréstimo de livros, desenvo
 - Registro de empréstimos e devoluções 📅
 - Edição e exclusão de registros
 - Filtros de busca (por título, nome de usuário, status do empréstimo etc.)
-- Interface web responsiva (opcional)
+- Opção de exportar relatório de emprestimos
 
 ## 🧩 Estrutura do Projeto
 /Controllers --> Controladores (lógica de aplicação)
