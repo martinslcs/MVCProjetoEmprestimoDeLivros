@@ -11,6 +11,8 @@ namespace EmprestimoLivros.Data
         }
 
         public DbSet<EmprestimosModel> Emprestimos { get; set; }
+
+        public DbSet<UsuarioModel> Usuarios { get; set; }
     }
 }
 

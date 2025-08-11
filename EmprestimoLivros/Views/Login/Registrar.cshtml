@@ -1,0 +1,57 @@
+﻿@if (TempData["MenssagemSucesso"] != null)
+{
+    <div class="alert alert-success text-light" role="alert">
+        @TempData["MenssagemSucesso"]
+
+    </div>
+}
+
+@if (TempData["MenssagemErro"] != null)
+{
+    <div class="alert-danger text-light" role="alert">
+        @TempData["MenssagemErro"]
+
+    </div>
+}
+
+<div class="container" div>
+    <h1>Cadastro de Usuários</h1> 
+    <form>
+        <div class="mb-1">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+
+        <div class="mb-1">
+            <label for="sobrenome" class="form-label">Sobrenome:</label>
+            <input type="text" class="form-control" id="sobrenome">
+        </div>
+
+        <div class="mb-1">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+
+        <div class="mb-1">
+            <label for="senha" class="form-label">Senha:</label>
+            <input type="password" class="form-control" id="senha:">
+        </div>  
+
+        <div class="mb-1">
+            <label for="senha" class="form-label">Confirma Senha:</label>
+            <input type="password" class="form-control" id="senha:">
+        </div>  
+
+
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary w-25 mx-2">Cadastrar</button>
+            <a asp-action="Index" asp-controller="Login" class="btn w-25">Voltar</a>
+        </div>
+
+    </form>
+
+
+
+
+</div>
