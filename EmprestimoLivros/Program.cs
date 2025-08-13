@@ -1,4 +1,6 @@
 using EmprestimoLivros.Data;
+using EmprestimoLivros.Services.LoginService;
+using EmprestimoLivros.Services.SenhaService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -11,6 +13,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnection"));
 });
+
+builder.Services.AddScoped<ILoginInterface, LoginService>();
+builder.Services.AddScoped<ISenhaInterface, SenhaService>();
 
 var app = builder.Build();
 
