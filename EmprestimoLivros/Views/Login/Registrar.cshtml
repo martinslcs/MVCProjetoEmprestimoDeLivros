@@ -6,12 +6,12 @@
 @if (TempData["MenssagemSucesso"] != null)
 {
     <div class="alert alert-success text-light" role="alert">
-        @TempData["MenssagemSucesso"]
+        @TempData["MensagemSucesso"]
 
     </div>
 }
 
-@if (TempData["MenssagemErro"] != null)
+@if (TempData["MensagemSucesso"] != null)
 {
     <div class="alert-danger text-light" role="alert">
         @TempData["MenssagemErro"]
@@ -38,18 +38,13 @@
         </div>
 
         <div class="mb-1">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" asp-for="Email">
-        </div>
-
-        <div class="mb-1">
             <label for="senha" class="form-label">Senha:</label>
-            <input type="password" class="form-control" id="senha:" asp-for="Senha">
+            <input type="password" class="form-control" id="senha" asp-for="Senha">
         </div>  
 
         <div class="mb-1">
             <label for="senha" class="form-label">Confirma Senha:</label>
-            <input type="password" class="form-control" id="senha:" asp-for="ConfirmarSenha">
+            <input type="password" class="form-control" id="confirmarSenha" asp-for="ConfirmarSenha">
         </div>  
 
 

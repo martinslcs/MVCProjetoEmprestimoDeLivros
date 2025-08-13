@@ -8,7 +8,7 @@ namespace EmprestimoLivros.Dto
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Digite o Sobrenome!")]
-        public int Sobrenome { get; set; }
+        public string Sobrenome { get; set; }
 
         [Required(ErrorMessage = "Digite o E-mail!")]
         public string Email { get; set; }
@@ -17,7 +17,8 @@ namespace EmprestimoLivros.Dto
         [Required(ErrorMessage = "Digite a Senha!")]
         public string Senha { get; set; }
 
-        [Required(ErrorMessage = "Digite a Confirmação de Senha!")]
+        [Required(ErrorMessage = "Digite a Confirmação de Senha!"),
+            Compare("Senha", ErrorMessage = "As senhas não estão iguais")]
         public string ConfirmarSenha { get; set; }
     }
 }
