@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmprestimoLivros.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250811213258_AdicionandoTabelaUsuarios")]
-    partial class AdicionandoTabelaUsuarios
+    [Migration("20250818230051_CriandoTabelaUsuarios")]
+    partial class CriandoTabelaUsuarios
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,8 +77,9 @@ namespace EmprestimoLivros.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("Sobrenome")
-                        .HasColumnType("int");
+                    b.Property<string>("Sobrenome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

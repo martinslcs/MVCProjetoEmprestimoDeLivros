@@ -1,62 +1,86 @@
 ﻿@using EmprestimoLivros.Dto
 @model UsuarioRegisterDto
 
-
-
-@if (TempData["MenssagemSucesso"] != null)
-{
-    <div class="alert alert-success text-light" role="alert">
-        @TempData["MensagemSucesso"]
-
-    </div>
-}
-
+@* ****************************************************** *@
+@* **SEÇÃO TempData CORRIGIDA** - A chave da mensagem de erro foi corrigida no 'if'.
+   - A classe CSS para o alerta de erro foi ajustada.
+   - Corrigidos pequenos erros de digitação nas chaves. *@
+@* ****************************************************** *@
 @if (TempData["MensagemSucesso"] != null)
 {
-    <div class="alert-danger text-light" role="alert">
-        @TempData["MenssagemErro"]
-
+    <div class="alert alert-success" role="alert">
+        @TempData["MensagemSucesso"]
     </div>
 }
 
-<div class="container" div>
-    <h1>Cadastro de Usuários</h1> 
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+
+
+<div class="container">
+    <h1>Cadastro de Usuários</h1>
     <form asp-action="Registrar" asp-controller="Login" method="post">
-        <div class="mb-1">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" asp-for="Email">
+
+        @* Adicionado para exibir erros gerais do modelo que não são de um campo específico *@
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            @* Aumentei a margem para mb-3 para melhor espaçamento *@
+            <label asp-for="Email" class="form-label">Email:</label>
+            <input type="email" class="form-control" asp-for="Email">
+            @* --- ADICIONADO: Exibe o erro de validação para o campo Email --- *@
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
-        <div class="mb-1">
-            <label for="nome" class="form-label">Nome:</label>
-            <input type="text" class="form-control" id="nome" asp-for="Nome">
+        <div class="mb-3">
+            <label asp-for="Nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" asp-for="Nome">
+            @* --- ADICIONADO: Exibe o erro de validação para o campo Nome --- *@
+            <span asp-validation-for="Nome" class="text-danger"></span>
         </div>
 
-        <div class="mb-1">
-            <label for="sobrenome" class="form-label">Sobrenome:</label>
-            <input type="text" class="form-control" id="sobrenome" asp-for="Sobrenome">
+        <div class="mb-3">
+            <label asp-for="Sobrenome" class="form-label">Sobrenome:</label>
+            <input type="text" class="form-control" asp-for="Sobrenome">
+            @* --- ADICIONADO: Exibe o erro de validação para o campo Sobrenome --- *@
+            <span asp-validation-for="Sobrenome" class="text-danger"></span>
         </div>
 
-        <div class="mb-1">
-            <label for="senha" class="form-label">Senha:</label>
-            <input type="password" class="form-control" id="senha" asp-for="Senha">
-        </div>  
+        <div class="mb-3">
+            <label asp-for="Senha" class="form-label">Senha:</label>
+            <input type="password" class="form-control" asp-for="Senha">
+            @* --- ADICIONADO: Exibe o erro de validação para o campo Senha --- *@
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
 
-        <div class="mb-1">
-            <label for="senha" class="form-label">Confirma Senha:</label>
-            <input type="password" class="form-control" id="confirmarSenha" asp-for="ConfirmarSenha">
-        </div>  
+        <div class="mb-3">
+            <label asp-for="ConfirmarSenha" class="form-label">Confirma Senha:</label>
+            <input type="password" class="form-control" asp-for="ConfirmarSenha">
+            @* --- ADICIONADO: Exibe o erro de validação para o campo ConfirmarSenha --- *@
+            <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
+        </div>
 
-
-
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mt-4">
+            @* Adicionada margem superior *@
             <button type="submit" class="btn btn-primary w-25 mx-2">Cadastrar</button>
-            <a asp-action="Index" asp-controller="Login" class="btn w-25">Voltar</a>
+            <a asp-action="Index" asp-controller="Login" class="btn btn-secondary w-25">Voltar</a> @* Mudei a cor do botão voltar para melhor contraste *@
         </div>
-
     </form>
-
-
-
-
 </div>
+
+
+@* ****************************************************** *@
+@* **SEÇÃO DE SCRIPTS ESSENCIAL**
+   - Esta seção carrega os scripts do jQuery Unobtrusive Validation.
+   - Sem ela, a validação no navegador não funciona e as mensagens
+     de erro que adicionamos acima nunca aparecerão. *@
+@* ****************************************************** *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

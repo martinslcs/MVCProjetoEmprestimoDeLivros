@@ -51,7 +51,7 @@ namespace EmprestimoLivros.Services.LoginService
             }
             catch (Exception ex) 
             {
-                response.Mensagem = ex.Message;
+                response.Mensagem = ex.InnerException?.Message ?? ex.Message;
                 response.Status = false;
                 return response;
             }
